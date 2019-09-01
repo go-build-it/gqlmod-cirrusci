@@ -2,7 +2,9 @@ test_task:
   container:
     image: python:3
   setup_script:
-    - pip install gqlmod>=0a0 .
+    # Until we get release stuff rolling
+    - pip install https://github.com/go-build-it/gqlmod/archive/master.zip
+    - pip install .
   test_script:
     - python setup.py test
 
