@@ -1,7 +1,9 @@
 test_task:
   container:
     image: python:3
-  script:
+  setup_script:
+    - pip install gqlmod>=0a0 .
+  test_script:
     - python setup.py test
 
 
