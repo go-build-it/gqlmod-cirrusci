@@ -10,6 +10,6 @@ class CirrusCiProvider(UrllibJsonProvider):
     def __init__(self, token=None):
         self.token = token
 
-    def modify_request(self, req):
+    def modify_request(self, req, variables):
         if self.token:
             req.add_header('Authorization', f"Bearer {self.token}")
