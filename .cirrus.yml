@@ -6,7 +6,7 @@ test_task:
     - pip install "git+https://github.com/gqlmod/gqlmod.git#egg=gqlmod[httpx]"
     # - pip install .
   test_script:
-    - python setup.py test
+    - pytest
 
 
 flake8_task:
