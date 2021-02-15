@@ -1,15 +1,17 @@
 """
 Provider for Cirrus CI's GraphQL API.
 """
-from gqlmod.helpers.urllib import UrllibJsonProvider
+from gqlmod.helpers.httpx import HttpxProvider
 
 
-class CirrusCiProvider(UrllibJsonProvider):
+class CirrusCiProvider(HttpxProvider):
     endpoint = 'https://api.cirrus-ci.com/graphql'
 
     def __init__(self, token=None):
         self.token = token
 
-    def modify_request(self, req, variables):
+    def build_request(self, query, variables):
+        req = super().build_request(query, variables)
         if self.token:
-            req.add_header('Authorization', f"Bearer {self.token}")
+            req.headers['Authorization'] = f"Bearer {self.token}"
+        return req

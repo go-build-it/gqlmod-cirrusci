@@ -2,11 +2,10 @@ test_task:
   container:
     image: python:3
   setup_script:
-    # Until we get release stuff rolling
-    - pip install "git+https://github.com/gqlmod/gqlmod.git#egg=gqlmod"
-    - pip install .
+    - pip install --use-deprecated=legacy-resolver -e "git+https://github.com/gqlmod/gqlmod.git#egg=gqlmod[httpx]" .
+    - pip install pytest
   test_script:
-    - python setup.py test
+    - pytest
 
 
 flake8_task:
